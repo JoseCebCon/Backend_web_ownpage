@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.3",
+    "package.json": "^0.0.0"
+  },
+  "name": "pspjecc",
+  "version": "1.0.0",
+  "description": "es el proyecto de backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseCebCon/backend_web_jecc.git"
+  },
+  "author": "Jose Eduardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseCebCon/backend_web_jecc/issues"
+  },
+  "homepage": "https://github.com/JoseCebCon/backend_web_jecc#readme"
+}
