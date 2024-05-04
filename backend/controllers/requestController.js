@@ -24,7 +24,7 @@ const crearRequest = asyncHandler(async (req, res) => {
 
     if(!req.body.phone){
         res.status(400)
-        throw new Error('Please, fill your number of phone')
+        throw new Error('Please, fill your number of your phone')
     }
 
     if(!req.body.message){
@@ -43,35 +43,8 @@ const crearRequest = asyncHandler(async (req, res) => {
     res.status(200).json(request)
 })
 
-const updateRequest = asyncHandler(async (req, res) => {
-    const request = await Request.find({user: req.lastname})
-
-    if(!request){
-        res.status(400)
-        throw new Error('Request not found')
-    }
-
-    const requestUpdated = await Request.findByIdAndUpdate(req.params.last, req.body, {new: true})
-
-    res.status(200).json(requestUpdated)
-})
-
-const deleteRequest = asyncHandler(async (req, res) => {
-    const request = await Request.findById(req.params._id)
-
-    if(!request){
-        res.status(400)
-        throw new Error('Request not found')
-    }
-
-    await Request.deleteOne(request)
-
-    res.status(200).json({_id: req.params._id})
-})
 
 module.exports = {
     getRequest,
     crearRequest,
-    updateRequest,
-    deleteRequest
 }
