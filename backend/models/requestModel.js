@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const requestSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
+    
     lastname: {
         type: String,
         required: [true, "Please, fill your lastname"]
@@ -14,18 +20,16 @@ const requestSchema = mongoose.Schema({
     email:{
         type: String,
         required: [true, "Please, fill your e-mail"],
-        unique: true
     },
 
     phone:{
-        type: Float64Array,
+        type: String,
         required: [true, "Please, fill your number of phone"]
     },
 
     message:{
         type: String,
         required: [true, "Please, fill your message"],
-        unique: true
     }
 
 }, {

@@ -2,8 +2,8 @@ const asyncHandler = require('express-async-handler')
 const Request = require('../models/requestModel')
 
 const getRequest = asyncHandler(async (req, res) => {
-    const request = await Request.find({user: req.user.id})
-    res.status(200).json({request})
+    const requests = await Request.find({user: req.lastname})
+    res.status(200).json({requests})
 })
 
 const crearRequest = asyncHandler(async (req, res) => {
@@ -40,24 +40,24 @@ const crearRequest = asyncHandler(async (req, res) => {
         message: req.body.message
     })
 
-    res.status(201).json(request)
+    res.status(200).json(request)
 })
 
 const updateRequest = asyncHandler(async (req, res) => {
-    const request = await Request.findById(req.params.id)
+    const request = await Request.find({user: req.lastname})
 
     if(!request){
         res.status(400)
         throw new Error('Request not found')
     }
 
-    const requestUpdated = await Request.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const requestUpdated = await Request.findByIdAndUpdate(req.params.last, req.body, {new: true})
 
     res.status(200).json(requestUpdated)
 })
 
 const deleteRequest = asyncHandler(async (req, res) => {
-    const request = await Request.findById(req.params.id)
+    const request = await Request.findById(req.params._id)
 
     if(!request){
         res.status(400)
@@ -66,7 +66,7 @@ const deleteRequest = asyncHandler(async (req, res) => {
 
     await Request.deleteOne(request)
 
-    res.status(200).json({id: req.params.id})
+    res.status(200).json({_id: req.params._id})
 })
 
 module.exports = {

@@ -16,6 +16,8 @@ const crearTareas = asyncHandler(async (req, res) => {
         user: req.user.id,
         role: req.body.role,
     })
+
+    res.status(200).json(tarea)
 })
 
 const updateTareas = asyncHandler(async(req, res) => {
